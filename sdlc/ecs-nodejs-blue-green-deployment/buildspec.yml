@@ -1,0 +1,21 @@
+version: 0.2
+
+env:
+  variables:
+    AWS_ACCOUNT_ID: '341546619470'
+phases:
+ pre_build:
+   commands:
+     - REPOSITORY_URI=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/ecs-blue-green-nodejs
+     - aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
+ install:
+   runtime-versions:
+     java: corretto11
+ build:
+   commands:
+   - docker build -t ecs-blue-green-nodejs .
+   - docker tag ecs-blue-green-nodejs:latest ${REPOSITORY_URI}:latest
+   - docker push ${REPOSITORY_URI}:latest
+artifacts:
+  files: 
+    - appspec.yaml

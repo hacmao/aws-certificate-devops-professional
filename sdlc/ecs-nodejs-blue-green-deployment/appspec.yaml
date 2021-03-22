@@ -1,0 +1,10 @@
+version: 0.0
+
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:ap-southeast-1:341546619470:task-definition/EcsCdkStackTaskDef9E992340:14"
+        LoadBalancerInfo:
+          ContainerName: "NodejsApp"
+          ContainerPort: 3000

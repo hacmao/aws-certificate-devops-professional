@@ -1,0 +1,343 @@
+{
+  "Resources": {
+    "alb8A8B13C2": {
+      "Type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+      "Properties": {
+        "LoadBalancerAttributes": [
+          {
+            "Key": "deletion_protection.enabled",
+            "Value": "false"
+          }
+        ],
+        "Name": "alb-nodejs",
+        "Scheme": "internet-facing",
+        "SecurityGroups": [
+          {
+            "Fn::GetAtt": [
+              "albSecurityGroup49866104",
+              "GroupId"
+            ]
+          }
+        ],
+        "Subnets": [
+          "subnet-4c87262a",
+          "subnet-568a5b1e",
+          "subnet-9ec854c7"
+        ],
+        "Type": "application"
+      },
+      "Metadata": {
+        "aws:cdk:path": "EcsCdkStack/alb/Resource"
+      }
+    },
+    "albSecurityGroup49866104": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Automatically created Security Group for ELB EcsCdkStackalb8ADB77B4",
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow from anyone on port 80",
+            "FromPort": 80,
+            "IpProtocol": "tcp",
+            "ToPort": 80
+          }
+        ],
+        "VpcId": "vpc-b650add0"
+      },
+      "Metadata": {
+        "aws:cdk:path": "EcsCdkStack/alb/SecurityGroup/Resource"
+      }
+    },
+    "albSecurityGrouptoEcsCdkStackecssgDB5D38543000CED1943F": {
+      "Type": "AWS::EC2::SecurityGroupEgress",
+      "Properties": {
+        "GroupId": {
+          "Fn::GetAtt": [
+            "albSecurityGroup49866104",
+            "GroupId"
+          ]
+        },
+        "IpProtocol": "tcp",
+        "Description": "Load balancer to target",
+        "DestinationSecurityGroupId": {
+          "Fn::GetAtt": [
+            "ecssg0261AE9D",
+            "GroupId"
+          ]
+        },
+        "FromPort": 3000,
+        "ToPort": 3000
+      },
+      "Metadata": {
+        "aws:cdk:path": "EcsCdkStack/alb/SecurityGroup/to EcsCdkStackecssgDB5D3854:3000"
+      }
+    },
+    "albalblistenerA15D02F3": {
+      "Type": "AWS::ElasticLoadBalancingV2::Listener",
+      "Properties": {
+        "DefaultActions": [
+          {
+            "TargetGroupArn": {
+              "Ref": "albTargetGroup34598B19"
+            },
+            "Type": "forward"
+          }
+        ],
+        "LoadBalancerArn": {
+          "Ref": "alb8A8B13C2"
+        },
+        "Port": 80,
+        "Protocol": "HTTP"
+      },
+      "Metadata": {
+        "aws:cdk:path": "EcsCdkStack/alb/alb-listener/Resource"
+      }
+    },
+    "albTargetGroup34598B19": {
+      "Type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+      "Properties": {
+        "HealthCheckPath": "/health",
+        "Name": "alb-nodejs-tg2",
+        "Port": 80,
+        "Protocol": "HTTP",
+        "TargetType": "ip",
+        "VpcId": "vpc-b650add0"
+      },
+      "Metadata": {
+        "aws:cdk:path": "EcsCdkStack/albTargetGroup/Resource"
+      }
+    },
+    "taskExecutionRolePolicy6F18EA27": {
+      "Type": "AWS::IAM::Policy",
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:BatchGetImage"
+              ],
+              "Effect": "Allow",
+              "Resource": {
+                "Fn::Join": [
+                  "",
+                  [
+                    "arn:",
+                    {
+                      "Ref": "AWS::Partition"
+                    },
+                    ":ecr:ap-southeast-1:341546619470:repository/ecs-blue-green-nodejs"
+                  ]
+                ]
+              }
+            },
+            {
+              "Action": "ecr:GetAuthorizationToken",
+              "Effect": "Allow",
+              "Resource": "*"
+            },
+            {
+              "Action": [
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+              ],
+              "Effect": "Allow",
+              "Resource": "arn:aws:logs:ap-southeast-1:341546619470:log-group:ecs-nodejs:*"
+            }
+          ],
+          "Version": "2012-10-17"
+        },
+        "PolicyName": "taskExecutionRolePolicy6F18EA27",
+        "Roles": [
+          "ecsTaskExecutionRole"
+        ]
+      },
+      "Metadata": {
+        "aws:cdk:path": "EcsCdkStack/taskExecutionRole/Policy/Resource"
+      }
+    },
+    "ecsbluegreencluster76E19707": {
+      "Type": "AWS::ECS::Cluster",
+      "Properties": {
+        "ClusterName": "ecs-blue-green-cluster"
+      },
+      "Metadata": {
+        "aws:cdk:path": "EcsCdkStack/ecs-blue-green-cluster/Resource"
+      }
+    },
+    "TaskDef54694570": {
+      "Type": "AWS::ECS::TaskDefinition",
+      "Properties": {
+        "ContainerDefinitions": [
+          {
+            "Essential": true,
+            "Image": {
+              "Fn::Join": [
+                "",
+                [
+                  "341546619470.dkr.ecr.ap-southeast-1.",
+                  {
+                    "Ref": "AWS::URLSuffix"
+                  },
+                  "/ecs-blue-green-nodejs:latest"
+                ]
+              ]
+            },
+            "LogConfiguration": {
+              "LogDriver": "awslogs",
+              "Options": {
+                "awslogs-group": "ecs-nodejs",
+                "awslogs-stream-prefix": "/ecs/nodejs-app/",
+                "awslogs-region": "ap-southeast-1"
+              }
+            },
+            "Name": "NodejsApp",
+            "PortMappings": [
+              {
+                "ContainerPort": 3000,
+                "Protocol": "tcp"
+              }
+            ]
+          }
+        ],
+        "Cpu": "512",
+        "ExecutionRoleArn": "arn:aws:iam::341546619470:role/ecsTaskExecutionRole",
+        "Family": "EcsCdkStackTaskDef9E992340",
+        "Memory": "1024",
+        "NetworkMode": "awsvpc",
+        "RequiresCompatibilities": [
+          "FARGATE"
+        ],
+        "TaskRoleArn": "arn:aws:iam::341546619470:role/ecsTaskRoleS3FullAccess"
+      },
+      "Metadata": {
+        "aws:cdk:path": "EcsCdkStack/TaskDef/Resource"
+      }
+    },
+    "ecssg0261AE9D": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "EcsCdkStack/ecs-sg",
+        "GroupName": "ecs-sg",
+        "SecurityGroupEgress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "Allow all outbound traffic by default",
+            "IpProtocol": "-1"
+          }
+        ],
+        "SecurityGroupIngress": [
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:80",
+            "FromPort": 80,
+            "IpProtocol": "tcp",
+            "ToPort": 80
+          },
+          {
+            "CidrIp": "0.0.0.0/0",
+            "Description": "from 0.0.0.0/0:8080",
+            "FromPort": 8080,
+            "IpProtocol": "tcp",
+            "ToPort": 8080
+          }
+        ],
+        "VpcId": "vpc-b650add0"
+      },
+      "Metadata": {
+        "aws:cdk:path": "EcsCdkStack/ecs-sg/Resource"
+      }
+    },
+    "ecssgfromEcsCdkStackalbSecurityGroupAED34AA03000DC6ABB42": {
+      "Type": "AWS::EC2::SecurityGroupIngress",
+      "Properties": {
+        "IpProtocol": "tcp",
+        "Description": "Load balancer to target",
+        "FromPort": 3000,
+        "GroupId": {
+          "Fn::GetAtt": [
+            "ecssg0261AE9D",
+            "GroupId"
+          ]
+        },
+        "SourceSecurityGroupId": {
+          "Fn::GetAtt": [
+            "albSecurityGroup49866104",
+            "GroupId"
+          ]
+        },
+        "ToPort": 3000
+      },
+      "Metadata": {
+        "aws:cdk:path": "EcsCdkStack/ecs-sg/from EcsCdkStackalbSecurityGroupAED34AA0:3000"
+      }
+    },
+    "ServiceD69D759B": {
+      "Type": "AWS::ECS::Service",
+      "Properties": {
+        "Cluster": {
+          "Ref": "ecsbluegreencluster76E19707"
+        },
+        "DeploymentConfiguration": {
+          "MaximumPercent": 200,
+          "MinimumHealthyPercent": 50
+        },
+        "DeploymentController": {
+          "Type": "ECS"
+        },
+        "DesiredCount": 1,
+        "EnableECSManagedTags": false,
+        "HealthCheckGracePeriodSeconds": 120,
+        "LaunchType": "FARGATE",
+        "LoadBalancers": [
+          {
+            "ContainerName": "NodejsApp",
+            "ContainerPort": 3000,
+            "TargetGroupArn": {
+              "Ref": "albTargetGroup34598B19"
+            }
+          }
+        ],
+        "NetworkConfiguration": {
+          "AwsvpcConfiguration": {
+            "AssignPublicIp": "ENABLED",
+            "SecurityGroups": [
+              {
+                "Fn::GetAtt": [
+                  "ecssg0261AE9D",
+                  "GroupId"
+                ]
+              }
+            ],
+            "Subnets": [
+              "subnet-4c87262a",
+              "subnet-568a5b1e",
+              "subnet-9ec854c7"
+            ]
+          }
+        },
+        "ServiceName": "nodejs-service",
+        "TaskDefinition": {
+          "Ref": "TaskDef54694570"
+        }
+      },
+      "DependsOn": [
+        "albalblistenerA15D02F3"
+      ],
+      "Metadata": {
+        "aws:cdk:path": "EcsCdkStack/Service/Service"
+      }
+    },
+    "CDKMetadata": {
+      "Type": "AWS::CDK::Metadata",
+      "Properties": {
+        "Analytics": "v2:deflate64:H4sIAAAAAAAAA31Ry2rDMBD8ltwVpS6l0Fsb90Ghh2LnB7byxmzsSEYruRjhf69kx8Wh0JNmZ2d3RlImH+5ktnmEb96qqtkFZSzKUDpQjSiQjbcKRW40O+uVE/lRL+wo0lDAFtiRag1UX9CCVqTr/laGp65rSYEjoz9ibz/10KYNV/VaR+xQXzQLXvUPYGt0b9b4LklW5ShQRc8Slbfkhl/J/8RLbZH5D/2uJ34UBGcZPk20H5JoRsmKZchbHwNOURf4GvOAwwNw84xH0pQyz0GvGaMdULzbirvMlmh7Sg+eIk0w2VlZYGeYnLHDHhjHUWhToTzxrs/i993Lm82JibbWa0dnlMV8/gAuPqU93QEAAA=="
+      },
+      "Metadata": {
+        "aws:cdk:path": "EcsCdkStack/CDKMetadata/Default"
+      }
+    }
+  }
+}

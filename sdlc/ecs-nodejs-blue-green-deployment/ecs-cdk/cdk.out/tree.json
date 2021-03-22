@@ -1,0 +1,597 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "@aws-cdk/core.Construct",
+          "version": "1.94.1"
+        }
+      },
+      "EcsCdkStack": {
+        "id": "EcsCdkStack",
+        "path": "EcsCdkStack",
+        "children": {
+          "VPC": {
+            "id": "VPC",
+            "path": "EcsCdkStack/VPC",
+            "children": {
+              "PublicSubnet1": {
+                "id": "PublicSubnet1",
+                "path": "EcsCdkStack/VPC/PublicSubnet1",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.Resource",
+                  "version": "1.94.1"
+                }
+              },
+              "PublicSubnet2": {
+                "id": "PublicSubnet2",
+                "path": "EcsCdkStack/VPC/PublicSubnet2",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.Resource",
+                  "version": "1.94.1"
+                }
+              },
+              "PublicSubnet3": {
+                "id": "PublicSubnet3",
+                "path": "EcsCdkStack/VPC/PublicSubnet3",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.Resource",
+                  "version": "1.94.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Resource",
+              "version": "1.94.1"
+            }
+          },
+          "alb": {
+            "id": "alb",
+            "path": "EcsCdkStack/alb",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "EcsCdkStack/alb/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+                  "aws:cdk:cloudformation:props": {
+                    "loadBalancerAttributes": [
+                      {
+                        "key": "deletion_protection.enabled",
+                        "value": "false"
+                      }
+                    ],
+                    "name": "alb-nodejs",
+                    "scheme": "internet-facing",
+                    "securityGroups": [
+                      {
+                        "Fn::GetAtt": [
+                          "albSecurityGroup49866104",
+                          "GroupId"
+                        ]
+                      }
+                    ],
+                    "subnets": [
+                      "subnet-4c87262a",
+                      "subnet-568a5b1e",
+                      "subnet-9ec854c7"
+                    ],
+                    "type": "application"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-elasticloadbalancingv2.CfnLoadBalancer",
+                  "version": "1.94.1"
+                }
+              },
+              "SecurityGroup": {
+                "id": "SecurityGroup",
+                "path": "EcsCdkStack/alb/SecurityGroup",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "EcsCdkStack/alb/SecurityGroup/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                      "aws:cdk:cloudformation:props": {
+                        "groupDescription": "Automatically created Security Group for ELB EcsCdkStackalb8ADB77B4",
+                        "securityGroupIngress": [
+                          {
+                            "cidrIp": "0.0.0.0/0",
+                            "ipProtocol": "tcp",
+                            "fromPort": 80,
+                            "toPort": 80,
+                            "description": "Allow from anyone on port 80"
+                          }
+                        ],
+                        "vpcId": "vpc-b650add0"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-ec2.CfnSecurityGroup",
+                      "version": "1.94.1"
+                    }
+                  },
+                  "to EcsCdkStackecssgDB5D3854:3000": {
+                    "id": "to EcsCdkStackecssgDB5D3854:3000",
+                    "path": "EcsCdkStack/alb/SecurityGroup/to EcsCdkStackecssgDB5D3854:3000",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupEgress",
+                      "aws:cdk:cloudformation:props": {
+                        "groupId": {
+                          "Fn::GetAtt": [
+                            "albSecurityGroup49866104",
+                            "GroupId"
+                          ]
+                        },
+                        "ipProtocol": "tcp",
+                        "description": "Load balancer to target",
+                        "destinationSecurityGroupId": {
+                          "Fn::GetAtt": [
+                            "ecssg0261AE9D",
+                            "GroupId"
+                          ]
+                        },
+                        "fromPort": 3000,
+                        "toPort": 3000
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-ec2.CfnSecurityGroupEgress",
+                      "version": "1.94.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ec2.SecurityGroup",
+                  "version": "1.94.1"
+                }
+              },
+              "alb-listener": {
+                "id": "alb-listener",
+                "path": "EcsCdkStack/alb/alb-listener",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "EcsCdkStack/alb/alb-listener/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::Listener",
+                      "aws:cdk:cloudformation:props": {
+                        "defaultActions": [
+                          {
+                            "type": "forward",
+                            "targetGroupArn": {
+                              "Ref": "albTargetGroup34598B19"
+                            }
+                          }
+                        ],
+                        "loadBalancerArn": {
+                          "Ref": "alb8A8B13C2"
+                        },
+                        "port": 80,
+                        "protocol": "HTTP"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-elasticloadbalancingv2.CfnListener",
+                      "version": "1.94.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-elasticloadbalancingv2.ApplicationListener",
+                  "version": "1.94.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-elasticloadbalancingv2.ApplicationLoadBalancer",
+              "version": "1.94.1"
+            }
+          },
+          "albTargetGroup": {
+            "id": "albTargetGroup",
+            "path": "EcsCdkStack/albTargetGroup",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "EcsCdkStack/albTargetGroup/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "healthCheckPath": "/health",
+                    "name": "alb-nodejs-tg2",
+                    "port": 80,
+                    "protocol": "HTTP",
+                    "targetType": "ip",
+                    "vpcId": "vpc-b650add0"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-elasticloadbalancingv2.CfnTargetGroup",
+                  "version": "1.94.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-elasticloadbalancingv2.ApplicationTargetGroup",
+              "version": "1.94.1"
+            }
+          },
+          "taskExecutionRole": {
+            "id": "taskExecutionRole",
+            "path": "EcsCdkStack/taskExecutionRole",
+            "children": {
+              "Policy": {
+                "id": "Policy",
+                "path": "EcsCdkStack/taskExecutionRole/Policy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "EcsCdkStack/taskExecutionRole/Policy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                      "aws:cdk:cloudformation:props": {
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": [
+                                "ecr:BatchCheckLayerAvailability",
+                                "ecr:GetDownloadUrlForLayer",
+                                "ecr:BatchGetImage"
+                              ],
+                              "Effect": "Allow",
+                              "Resource": {
+                                "Fn::Join": [
+                                  "",
+                                  [
+                                    "arn:",
+                                    {
+                                      "Ref": "AWS::Partition"
+                                    },
+                                    ":ecr:ap-southeast-1:341546619470:repository/ecs-blue-green-nodejs"
+                                  ]
+                                ]
+                              }
+                            },
+                            {
+                              "Action": "ecr:GetAuthorizationToken",
+                              "Effect": "Allow",
+                              "Resource": "*"
+                            },
+                            {
+                              "Action": [
+                                "logs:CreateLogStream",
+                                "logs:PutLogEvents"
+                              ],
+                              "Effect": "Allow",
+                              "Resource": "arn:aws:logs:ap-southeast-1:341546619470:log-group:ecs-nodejs:*"
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "policyName": "taskExecutionRolePolicy6F18EA27",
+                        "roles": [
+                          "ecsTaskExecutionRole"
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "@aws-cdk/aws-iam.CfnPolicy",
+                      "version": "1.94.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-iam.Policy",
+                  "version": "1.94.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Resource",
+              "version": "1.94.1"
+            }
+          },
+          "taskRole": {
+            "id": "taskRole",
+            "path": "EcsCdkStack/taskRole",
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Resource",
+              "version": "1.94.1"
+            }
+          },
+          "ecs-blue-green-cluster": {
+            "id": "ecs-blue-green-cluster",
+            "path": "EcsCdkStack/ecs-blue-green-cluster",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "EcsCdkStack/ecs-blue-green-cluster/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ECS::Cluster",
+                  "aws:cdk:cloudformation:props": {
+                    "clusterName": "ecs-blue-green-cluster"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ecs.CfnCluster",
+                  "version": "1.94.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-ecs.Cluster",
+              "version": "1.94.1"
+            }
+          },
+          "TaskDef": {
+            "id": "TaskDef",
+            "path": "EcsCdkStack/TaskDef",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "EcsCdkStack/TaskDef/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ECS::TaskDefinition",
+                  "aws:cdk:cloudformation:props": {
+                    "containerDefinitions": [
+                      {
+                        "essential": true,
+                        "image": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "341546619470.dkr.ecr.ap-southeast-1.",
+                              {
+                                "Ref": "AWS::URLSuffix"
+                              },
+                              "/ecs-blue-green-nodejs:latest"
+                            ]
+                          ]
+                        },
+                        "name": "NodejsApp",
+                        "portMappings": [
+                          {
+                            "containerPort": 3000,
+                            "protocol": "tcp"
+                          }
+                        ],
+                        "logConfiguration": {
+                          "logDriver": "awslogs",
+                          "options": {
+                            "awslogs-group": "ecs-nodejs",
+                            "awslogs-stream-prefix": "/ecs/nodejs-app/",
+                            "awslogs-region": "ap-southeast-1"
+                          }
+                        }
+                      }
+                    ],
+                    "cpu": "512",
+                    "executionRoleArn": "arn:aws:iam::341546619470:role/ecsTaskExecutionRole",
+                    "family": "EcsCdkStackTaskDef9E992340",
+                    "memory": "1024",
+                    "networkMode": "awsvpc",
+                    "requiresCompatibilities": [
+                      "FARGATE"
+                    ],
+                    "taskRoleArn": "arn:aws:iam::341546619470:role/ecsTaskRoleS3FullAccess"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ecs.CfnTaskDefinition",
+                  "version": "1.94.1"
+                }
+              },
+              "NodejsApp": {
+                "id": "NodejsApp",
+                "path": "EcsCdkStack/TaskDef/NodejsApp",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ecs.ContainerDefinition",
+                  "version": "1.94.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-ecs.FargateTaskDefinition",
+              "version": "1.94.1"
+            }
+          },
+          "repo": {
+            "id": "repo",
+            "path": "EcsCdkStack/repo",
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-ecr.RepositoryBase",
+              "version": "1.94.1"
+            }
+          },
+          "LogGroup": {
+            "id": "LogGroup",
+            "path": "EcsCdkStack/LogGroup",
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Resource",
+              "version": "1.94.1"
+            }
+          },
+          "ecs-sg": {
+            "id": "ecs-sg",
+            "path": "EcsCdkStack/ecs-sg",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "EcsCdkStack/ecs-sg/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "groupDescription": "EcsCdkStack/ecs-sg",
+                    "groupName": "ecs-sg",
+                    "securityGroupEgress": [
+                      {
+                        "cidrIp": "0.0.0.0/0",
+                        "description": "Allow all outbound traffic by default",
+                        "ipProtocol": "-1"
+                      }
+                    ],
+                    "securityGroupIngress": [
+                      {
+                        "cidrIp": "0.0.0.0/0",
+                        "ipProtocol": "tcp",
+                        "fromPort": 80,
+                        "toPort": 80,
+                        "description": "from 0.0.0.0/0:80"
+                      },
+                      {
+                        "cidrIp": "0.0.0.0/0",
+                        "ipProtocol": "tcp",
+                        "fromPort": 8080,
+                        "toPort": 8080,
+                        "description": "from 0.0.0.0/0:8080"
+                      }
+                    ],
+                    "vpcId": "vpc-b650add0"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ec2.CfnSecurityGroup",
+                  "version": "1.94.1"
+                }
+              },
+              "from EcsCdkStackalbSecurityGroupAED34AA0:3000": {
+                "id": "from EcsCdkStackalbSecurityGroupAED34AA0:3000",
+                "path": "EcsCdkStack/ecs-sg/from EcsCdkStackalbSecurityGroupAED34AA0:3000",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
+                  "aws:cdk:cloudformation:props": {
+                    "ipProtocol": "tcp",
+                    "description": "Load balancer to target",
+                    "fromPort": 3000,
+                    "groupId": {
+                      "Fn::GetAtt": [
+                        "ecssg0261AE9D",
+                        "GroupId"
+                      ]
+                    },
+                    "sourceSecurityGroupId": {
+                      "Fn::GetAtt": [
+                        "albSecurityGroup49866104",
+                        "GroupId"
+                      ]
+                    },
+                    "toPort": 3000
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ec2.CfnSecurityGroupIngress",
+                  "version": "1.94.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-ec2.SecurityGroup",
+              "version": "1.94.1"
+            }
+          },
+          "Service": {
+            "id": "Service",
+            "path": "EcsCdkStack/Service",
+            "children": {
+              "Service": {
+                "id": "Service",
+                "path": "EcsCdkStack/Service/Service",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ECS::Service",
+                  "aws:cdk:cloudformation:props": {
+                    "cluster": {
+                      "Ref": "ecsbluegreencluster76E19707"
+                    },
+                    "deploymentConfiguration": {
+                      "maximumPercent": 200,
+                      "minimumHealthyPercent": 50
+                    },
+                    "deploymentController": {
+                      "type": "ECS"
+                    },
+                    "desiredCount": 1,
+                    "enableEcsManagedTags": false,
+                    "healthCheckGracePeriodSeconds": 120,
+                    "launchType": "FARGATE",
+                    "loadBalancers": [
+                      {
+                        "targetGroupArn": {
+                          "Ref": "albTargetGroup34598B19"
+                        },
+                        "containerName": "NodejsApp",
+                        "containerPort": 3000
+                      }
+                    ],
+                    "networkConfiguration": {
+                      "awsvpcConfiguration": {
+                        "assignPublicIp": "ENABLED",
+                        "subnets": [
+                          "subnet-4c87262a",
+                          "subnet-568a5b1e",
+                          "subnet-9ec854c7"
+                        ],
+                        "securityGroups": [
+                          {
+                            "Fn::GetAtt": [
+                              "ecssg0261AE9D",
+                              "GroupId"
+                            ]
+                          }
+                        ]
+                      }
+                    },
+                    "serviceName": "nodejs-service",
+                    "taskDefinition": {
+                      "Ref": "TaskDef54694570"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "@aws-cdk/aws-ecs.CfnService",
+                  "version": "1.94.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/aws-ecs.FargateService",
+              "version": "1.94.1"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "EcsCdkStack/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "EcsCdkStack/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "@aws-cdk/core.CfnResource",
+                  "version": "1.94.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "@aws-cdk/core.Construct",
+              "version": "1.94.1"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "@aws-cdk/core.Stack",
+          "version": "1.94.1"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "@aws-cdk/core.App",
+      "version": "1.94.1"
+    }
+  }
+}

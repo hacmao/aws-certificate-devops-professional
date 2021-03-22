@@ -1,0 +1,362 @@
+{
+  "version": "9.0.0",
+  "artifacts": {
+    "Tree": {
+      "type": "cdk:tree",
+      "properties": {
+        "file": "tree.json"
+      }
+    },
+    "EcsCdkStack": {
+      "type": "aws:cloudformation:stack",
+      "environment": "aws://341546619470/ap-southeast-1",
+      "properties": {
+        "templateFile": "EcsCdkStack.template.json"
+      },
+      "metadata": {
+        "/EcsCdkStack/alb/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "alb8A8B13C2",
+            "trace": [
+              "new BaseLoadBalancer (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/shared/base-load-balancer.ts:208:22)",
+              "new ApplicationLoadBalancer (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-load-balancer.ts:85:5)",
+              "new EcsCdkStack (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/lib/ecs-cdk-stack.ts:27:17)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/bin/ecs-cdk.ts:7:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Module.m._compile (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "main (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "/home/hacmao/.nvm/versions/node/v14.16.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/EcsCdkStack/alb/SecurityGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "albSecurityGroup49866104",
+            "trace": [
+              "new SecurityGroup (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:402:26)",
+              "new ApplicationLoadBalancer (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-load-balancer.ts:92:52)",
+              "new EcsCdkStack (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/lib/ecs-cdk-stack.ts:27:17)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/bin/ecs-cdk.ts:7:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Module.m._compile (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "main (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "/home/hacmao/.nvm/versions/node/v14.16.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/EcsCdkStack/alb/SecurityGroup/to EcsCdkStackecssgDB5D3854:3000": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "albSecurityGrouptoEcsCdkStackecssgDB5D38543000CED1943F",
+            "trace": [
+              "SecurityGroup.addEgressRule (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:106:7)",
+              "SecurityGroup.addEgressRule (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:449:13)",
+              "/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:131:23",
+              "ReactiveList.forEachAndForever (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:267:7)",
+              "/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:130:45",
+              "ReactiveList.forEachAndForever (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:267:7)",
+              "Connections.allowTo (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:129:26)",
+              "Connections.allowFrom (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:161:25)",
+              "ApplicationListener.registerConnectable (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-listener.ts:460:29)",
+              "ApplicationTargetGroup.registerConnectable (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-target-group.ts:200:16)",
+              "Object.attachToApplicationTargetGroup (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ecs/lib/base/base-service.ts:472:21)",
+              "ApplicationTargetGroup.addTarget (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-target-group.ts:152:29)",
+              "new EcsCdkStack (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/lib/ecs-cdk-stack.ts:113:20)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/bin/ecs-cdk.ts:7:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Module.m._compile (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "main (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "/home/hacmao/.nvm/versions/node/v14.16.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/EcsCdkStack/alb/alb-listener/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "albalblistenerA15D02F3",
+            "trace": [
+              "new BaseListener (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/shared/base-listener.ts:109:22)",
+              "new ApplicationListener (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-listener.ts:191:5)",
+              "ApplicationLoadBalancer.addListener (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-load-balancer.ts:107:12)",
+              "new EcsCdkStack (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/lib/ecs-cdk-stack.ts:41:9)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/bin/ecs-cdk.ts:7:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Module.m._compile (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "main (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "/home/hacmao/.nvm/versions/node/v14.16.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/EcsCdkStack/albTargetGroup/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "albTargetGroup34598B19",
+            "trace": [
+              "new TargetGroupBase (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/shared/base-target-group.ts:241:21)",
+              "new ApplicationTargetGroup (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-target-group.ts:121:5)",
+              "new EcsCdkStack (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/lib/ecs-cdk-stack.ts:33:28)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/bin/ecs-cdk.ts:7:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Module.m._compile (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "main (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "/home/hacmao/.nvm/versions/node/v14.16.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/EcsCdkStack/taskExecutionRole/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "taskExecutionRolePolicy6F18EA27",
+            "trace": [
+              "new Policy (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-iam/lib/policy.ts:154:22)",
+              "Import.addToPrincipalPolicy (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-iam/lib/role.ts:208:32)",
+              "Function.addToPrincipal (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-iam/lib/grant.ts:168:61)",
+              "Function.addToPrincipalOrResource (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-iam/lib/grant.ts:119:26)",
+              "Import.grant (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ecr/lib/repository.ts:258:22)",
+              "Import.grantPull (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ecr/lib/repository.ts:271:22)",
+              "EcrImage.bind (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ecs/lib/images/ecr.ts:36:21)",
+              "new ContainerDefinition (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ecs/lib/container-definition.ts:414:36)",
+              "FargateTaskDefinition.addContainer (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ecs/lib/base/task-definition.ts:478:12)",
+              "new EcsCdkStack (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/lib/ecs-cdk-stack.ts:78:45)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/bin/ecs-cdk.ts:7:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Module.m._compile (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "main (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "/home/hacmao/.nvm/versions/node/v14.16.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/EcsCdkStack/ecs-blue-green-cluster/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ecsbluegreencluster76E19707",
+            "trace": [
+              "new Cluster (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ecs/lib/cluster.ts:153:21)",
+              "new EcsCdkStack (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/lib/ecs-cdk-stack.ts:56:21)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/bin/ecs-cdk.ts:7:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Module.m._compile (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "main (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "/home/hacmao/.nvm/versions/node/v14.16.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/EcsCdkStack/TaskDef/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "TaskDef54694570",
+            "trace": [
+              "new TaskDefinition (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ecs/lib/base/task-definition.ts:363:21)",
+              "new FargateTaskDefinition (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ecs/lib/fargate/fargate-task-definition.ts:111:5)",
+              "new EcsCdkStack (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/lib/ecs-cdk-stack.ts:61:35)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/bin/ecs-cdk.ts:7:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Module.m._compile (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "main (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "/home/hacmao/.nvm/versions/node/v14.16.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/EcsCdkStack/ecs-sg/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ecssg0261AE9D",
+            "trace": [
+              "new SecurityGroup (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:402:26)",
+              "new EcsCdkStack (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/lib/ecs-cdk-stack.ts:91:30)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/bin/ecs-cdk.ts:7:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Module.m._compile (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "main (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "/home/hacmao/.nvm/versions/node/v14.16.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/EcsCdkStack/ecs-sg/from EcsCdkStackalbSecurityGroupAED34AA0:3000": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ecssgfromEcsCdkStackalbSecurityGroupAED34AA03000DC6ABB42",
+            "trace": [
+              "SecurityGroup.addIngressRule (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:88:7)",
+              "SecurityGroup.addIngressRule (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/security-group.ts:419:13)",
+              "/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:154:23",
+              "ReactiveList.forEachAndForever (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:267:7)",
+              "/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:153:45",
+              "ReactiveList.forEachAndForever (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:267:7)",
+              "Connections.allowFrom (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ec2/lib/connections.ts:152:26)",
+              "ApplicationListener.registerConnectable (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-listener.ts:460:29)",
+              "ApplicationTargetGroup.registerConnectable (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-target-group.ts:200:16)",
+              "Object.attachToApplicationTargetGroup (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ecs/lib/base/base-service.ts:472:21)",
+              "ApplicationTargetGroup.addTarget (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-elasticloadbalancingv2/lib/alb/application-target-group.ts:152:29)",
+              "new EcsCdkStack (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/lib/ecs-cdk-stack.ts:113:20)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/bin/ecs-cdk.ts:7:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Module.m._compile (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "main (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "/home/hacmao/.nvm/versions/node/v14.16.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/EcsCdkStack/Service/Service": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "ServiceD69D759B",
+            "trace": [
+              "new BaseService (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ecs/lib/base/base-service.ts:376:21)",
+              "new FargateService (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/aws-ecs/lib/fargate/fargate-service.ts:153:5)",
+              "new EcsCdkStack (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/lib/ecs-cdk-stack.ts:98:21)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/bin/ecs-cdk.ts:7:1)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Module.m._compile (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1056:23)",
+              "Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Object.require.extensions.<computed> [as .ts] (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/index.ts:1059:12)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "main (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:198:14)",
+              "Object.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/ts-node/src/bin.ts:288:3)",
+              "Module._compile (internal/modules/cjs/loader.js:1063:30)",
+              "Object.Module._extensions..js (internal/modules/cjs/loader.js:1092:10)",
+              "Module.load (internal/modules/cjs/loader.js:928:32)",
+              "Function.Module._load (internal/modules/cjs/loader.js:769:14)",
+              "Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:72:12)",
+              "/home/hacmao/.nvm/versions/node/v14.16.0/lib/node_modules/npm/node_modules/libnpx/index.js:268:14"
+            ]
+          }
+        ],
+        "/EcsCdkStack/CDKMetadata/Default": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "CDKMetadata",
+            "trace": [
+              "new MetadataResource (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/core/lib/private/metadata-resource.ts:22:24)",
+              "/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:140:5",
+              "visit (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:201:5)",
+              "visit (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:197:5)",
+              "injectMetadataResources (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:131:3)",
+              "Object.synthesize (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/core/lib/private/synthesis.ts:18:3)",
+              "App.synth (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/core/lib/stage.ts:188:23)",
+              "process.<anonymous> (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/@aws-cdk/core/lib/app.ts:123:45)",
+              "Object.onceWrapper (events.js:422:26)",
+              "process.emit (events.js:315:20)",
+              "process.EventEmitter.emit (domain.js:467:12)",
+              "process.emit (/home/hacmao/Documents/devops-aws/ecs-blue-green-nodejs/ecs-cdk/node_modules/source-map-support/source-map-support.js:495:21)"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}
