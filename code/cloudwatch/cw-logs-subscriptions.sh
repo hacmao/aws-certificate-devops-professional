@@ -12,3 +12,4 @@ aws logs put-subscription-filter \
     --filter-pattern "" \
     --destination-arn "arn:aws:firehose:eu-west-1:903077646177:deliverystream/DemoFirehose" \
     --role-arn "arn:aws:iam::903077646177:role/CWLtoKinesisFirehoseRole" --region eu-west-1 --profile aws-devops
+    
