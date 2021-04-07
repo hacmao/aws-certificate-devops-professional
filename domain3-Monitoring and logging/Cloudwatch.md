@@ -105,3 +105,8 @@ Ta có thể tạo trực tiếp event từ S3 để gọi lambda, SNS, SQS theo
 
 Tuy nhiên nó không đầy đủ nên ta có thể dùng Cloudwatch events với `Object level operations` để theo dõi nhiều API call hơn.  
 Tuy nhiên để điều này được hoạt động thì trước hết ta cần phải theo dõi S3 API call trong Cloudtrail đã.  
+
+## Tips  
+
++ Khi nào câu hỏi liên quan tới cần có cái nhìn chi tiết hơn thì xem xét custom metric.Custom metric giúp ta có cái nhìn tốt hơn về hệ thống. 
++ 

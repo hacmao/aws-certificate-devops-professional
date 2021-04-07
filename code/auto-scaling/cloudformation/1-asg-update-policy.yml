@@ -12,7 +12,7 @@ Resources:
           Ref: "AWS::Region"
       LaunchConfigurationName:
         Ref: LaunchConfig
-      DesiredCapacity: '3'
+          : '3'
       MinSize: '1'
       MaxSize: '4'
     CreationPolicy:
