@@ -106,7 +106,11 @@ Ta có thể tạo trực tiếp event từ S3 để gọi lambda, SNS, SQS theo
 Tuy nhiên nó không đầy đủ nên ta có thể dùng Cloudwatch events với `Object level operations` để theo dõi nhiều API call hơn.  
 Tuy nhiên để điều này được hoạt động thì trước hết ta cần phải theo dõi S3 API call trong Cloudtrail đã.  
 
+## Event bus  
+
+Event bus cho phép chúng ta có thể giao tiếp events giữa các accounts. Có thể setup giao tiếp từ bất kì tài khoản nào miễn là setup đúng rule hoặc là `Organization`.    
+
 ## Tips  
 
 + Khi nào câu hỏi liên quan tới cần có cái nhìn chi tiết hơn thì xem xét custom metric.Custom metric giúp ta có cái nhìn tốt hơn về hệ thống. 
-+ 
++ Billing alarm : tạo alarm để đánh giá mức độ tiêu thụ của tài khoản.  
