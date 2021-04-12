@@ -5,7 +5,9 @@
 Launch template cho phép ta có nhiều lựa chọn về cấu hình, có thể lưu lại để nâng cấp sau này, phân thành các version khác nhau.    
 AWS khuyên dùng launch template.
 
-tips : nếu muốn mix giữa spot và on-demand instance thì sẽ cần dùng launch template.  
+tips : 
++ nếu muốn mix giữa spot và on-demand instance thì sẽ cần dùng launch template.  
++ Launch configuration không thể bị chỉnh sửa sau khi chạy. Muốn sửa đổi ta cần tạo một bản copy của configuration hiện tại, sau đó edit lại ASG để sử dụng bản launch configuration mới.  
 
 ## Scheduled Action  
 
